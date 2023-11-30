@@ -4,7 +4,7 @@
 	"name": "Cisco Asa Orchestrator",
 	"status": "prototype",
 	"link_github": true,
-	"release_dir": "IISU/bin/Release/net6.0",
+	"release_dir": "CiscoAsaOrchestrator/bin/Release/net6.0",
 	"update_catalog": true,
 	"support_level": "kf-community",
 	"description": "",
