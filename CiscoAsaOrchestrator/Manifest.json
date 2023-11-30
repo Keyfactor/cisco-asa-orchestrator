@@ -1,0 +1,14 @@
+{
+  "extensions": {
+    "Keyfactor.Orchestrators.Extensions.IOrchestratorJobExtension": {
+      "CertStores.CiscoAsa.Inventory": {
+        "assemblypath": "CiscoAsa.dll",
+        "TypeFullName": "Keyfactor.Extensions.Orchestrator.CiscoAsa.Jobs.Inventory"
+      },
+      "CertStores.CiscoAsa.Management": {
+        "assemblypath": "CiscoAsa.dll",
+        "TypeFullName": "Keyfactor.Extensions.Orchestrator.CiscoAsa.Jobs.Management"
+      }
+    }
+  }
+}
