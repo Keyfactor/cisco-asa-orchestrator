@@ -132,8 +132,8 @@ The following table describes the required and optional fields for the `CiscoAsa
 | --------- | ----------- | ------------------------- |
 | Category | Select "CiscoAsa" or the customized certificate store name from the previous step. | |
 | Container | Optional container to associate certificate store with. | |
-| Client Machine | For the Client Machine field, enter the hostname or IP address of the Cisco Asa device without the 'http://' or 'https://' prefix. For example, you should enter '10.5.0.4' for an IP address. | |
-| Store Path | For the Store Path field, enter '/Identity' to specify managing the Identity Certificates on the Cisco Asa device. This value directs the orchestrator to the appropriate certificate store path on the device. | |
+| Client Machine | Hostname or IP address of the Cisco Asa Device without the http:// or https:// prefix. Example: 10.5.0.4. | |
+| Store Path | Cisco Asa Certificate Types to manage, currently only supporting '/Identity'. | |
 | Orchestrator | Select an approved orchestrator capable of managing `CiscoAsa` certificates. Specifically, one with the `CiscoAsa` capability. | |
 
 * **Using kfutil**
