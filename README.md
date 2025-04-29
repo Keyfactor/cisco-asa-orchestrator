@@ -38,7 +38,7 @@ The Keyfactor Universal Orchestrator may be installed on either Windows or Linux
 |Supports Management Remove|&check; |  |
 |Supports Create Store|  |  |
 |Supports Discovery|  |  |
-|Supports Renrollment|  |  |
+|Supports Reenrollment|  |  |
 |Supports Inventory|&check; |  |
 
 
@@ -213,4 +213,7 @@ Case Number|Case Name|Enrollment Params|Expected Results|Passed|Screenshot
 9|Attempted Replace with overwrite flag To Identiy Certs with Bindings|**Alias:** TC3EnrollWithBindings **Interfaces Comma Separated:** inside,dmz|Since overwrite flag was used, it will add and rebind a new certificate named TC3EnrollWithBindingsdoublepipeSomeDateInt this is *not* a replace to prevent downtime|True|![](Images/TC9-SameNameWithOverwriteFlag.gif)
 
 </details>
+
+When creating cert store type manually, that store property names and entry parameter names are case sensitive
+
 
