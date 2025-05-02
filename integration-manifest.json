@@ -1,112 +1,104 @@
 {
-   "$schema":"https://keyfactor.github.io/integration-manifest-schema.json",
-   "integration_type":"orchestrator",
-   "name":"Cisco Asa Orchestrator",
-   "status":"production",
-   "link_github":true,
-   "release_dir":"CiscoAsaOrchestrator/bin/Release/net6.0",
-   "update_catalog":true,
-   "support_level":"kf-supported",
-   "description":"The Cisco Asa Orchestrator will manage certificates on the Cisco Asa Device.",
-   "about":{
-      "orchestrator":{
-         "UOFramework":"10.2",
-         "pam_support":true,
-         "keyfactor_platform_version":"9.10",
-         "win":{
-            "supportsCreateStore":false,
-            "supportsDiscovery":false,
-            "supportsManagementAdd":true,
-            "supportsManagementRemove":true,
-            "supportsReenrollment":false,
-            "supportsInventory":true,
-            "platformSupport":"Unused"
-         },
-         "linux":{
-            "supportsCreateStore":false,
-            "supportsDiscovery":false,
-            "supportsManagementAdd":false,
-            "supportsManagementRemove":false,
-            "supportsReenrollment":false,
-            "supportsInventory":false,
-            "platformSupport":"Unused"
-         },
-         "store_types":[
+  "$schema": "https://keyfactor.github.io/integration-manifest-schema.json",
+  "integration_type": "orchestrator",
+  "name": "Cisco Asa Orchestrator",
+  "status": "production",
+  "link_github": true,
+  "update_catalog": true,
+  "support_level": "kf-supported",
+  "release_dir": "CiscoAsaOrchestrator/bin/Release",
+  "release_project": "CiscoAsaOrchestrator/CiscoAsa.csproj",
+  "description": "The Cisco Asa Orchestrator will manage certificates on the Cisco Asa Device.",
+  "about": {
+    "orchestrator": {
+      "UOFramework": "10.2",
+      "pam_support": true,
+      "keyfactor_platform_version": "9.10",
+      "store_types": [
+        {
+          "Name": "CiscoAsa",
+          "ShortName": "CiscoAsa",
+          "Capability": "CiscoAsa",
+          "LocalStore": false,
+          "SupportedOperations": {
+            "Add": true,
+            "Create": false,
+            "Discovery": false,
+            "Enrollment": false,
+            "Remove": true
+          },
+          "Properties": [
             {
-               "Name":"CiscoAsa",
-               "ShortName":"CiscoAsa",
-               "Capability":"CiscoAsa",
-               "LocalStore":false,
-               "SupportedOperations":{
-                  "Add":true,
-                  "Create":false,
-                  "Discovery":false,
-                  "Enrollment":false,
-                  "Remove":true
-               },
-               "Properties":[
-                  {
-                     "Name":"CommitToDisk",
-                     "DisplayName":"Commit To Disk",
-                     "Type":"Bool",
-                     "DependsOn":null,
-                     "DefaultValue":"false",
-                     "Required":false
-                  },
-                  {
-                     "Name":"ServerUsername",
-                     "DisplayName":"Server Username",
-                     "Type":"Secret",
-                     "DependsOn":null,
-                     "DefaultValue":null,
-                     "Required":false
-                  },
-                  {
-                     "Name":"ServerPassword",
-                     "DisplayName":"Server Password",
-                     "Type":"Secret",
-                     "DependsOn":null,
-                     "DefaultValue":null,
-                     "Required":false
-                  },
-                  {
-                     "Name":"ServerUseSsl",
-                     "DisplayName":"Use SSL",
-                     "Type":"Bool",
-                     "DependsOn":null,
-                     "DefaultValue":"true",
-                     "Required":true
-                  }
-               ],
-               "EntryParameters":[
-                  {
-                     "Name":"interfaces",
-                     "DisplayName":"Interfaces Comma Separated",
-                     "Type":"String",
-                     "RequiredWhen":{
-                        "HasPrivateKey":false,
-                        "OnAdd":false,
-                        "OnRemove":false,
-                        "OnReenrollment":false
-                     }
-                  }
-               ],
-               "PasswordOptions":{
-                  "EntrySupported":false,
-                  "StoreRequired":false,
-                  "Style":"Default"
-               },
-               "PrivateKeyAllowed":"Required",
-               "JobProperties":[
-                  "interfaces"
-               ],
-               "ServerRequired":true,
-               "PowerShell":false,
-               "BlueprintAllowed":true,
-               "CustomAliasAllowed":"Required"
+              "Name": "CommitToDisk",
+              "DisplayName": "Commit To Disk",
+              "Type": "Bool",
+              "DependsOn": "",
+              "DefaultValue": "false",
+              "Required": true,
+              "IsPAMEligible": false,
+              "Description": "This controls if you will write to the disk or memory on the device when adding or removing certificates."
+            },
+            {
+              "Name": "ServerUsername",
+              "DisplayName": "Server Username",
+              "Type": "Secret",
+              "DependsOn": "",
+              "DefaultValue": "",
+              "Required": false,
+              "IsPAMEligible": true,
+              "Description": "The username to log into the target server (This field is automatically created). Check the No Value Checkbox when using GMSA Accounts."
+
+            },
+            {
+              "Name": "ServerPassword",
+              "DisplayName": "Server Password",
+              "Type": "Secret",
+              "DependsOn": "",
+              "DefaultValue": "",
+              "Required": false,
+              "IsPAMEligible": true,
+              "Description": "The password that matches the username to log into the target server (This field is automatically created). Check the No Value Checkbox when using GMSA Accounts."
+            },
+            {
+              "Name": "ServerUseSsl",
+              "DisplayName": "Use SSL",
+              "Type": "Bool",
+              "DependsOn": "",
+              "DefaultValue": "true",
+              "Required": true,
+              "IsPAMEligible": false,
+              "Description": "Determines whether the server uses SSL or not (This field is automatically created)."
             }
-         ]
-      }
-   }
+          ],
+          "EntryParameters": [
+            {
+              "Name": "interfaces",
+              "DisplayName": "Interfaces Comma Separated",
+              "Type": "String",
+              "Description": "Comma separated list of Interfaces to bind to. One can be the primary certificate and the other can be the load balancing certificate. For inside here is a sample of binding to both primary and load balancing inside,inside vpnlb-ip.",
+              "RequiredWhen": {
+                "HasPrivateKey": false,
+                "OnAdd": false,
+                "OnRemove": false,
+                "OnReenrollment": false
+              }
+            }
+          ],
+          "PasswordOptions": {
+            "EntrySupported": false,
+            "StoreRequired": false,
+            "Style": "Default"
+          },
+          "PrivateKeyAllowed": "Required",
+          "ServerRequired": true,
+          "PowerShell": false,
+          "BlueprintAllowed": true,
+          "CustomAliasAllowed": "Required",
+          "ClientMachineDescription": "Hostname or IP of the Cisco Asa Device without the http:// or https:// prefix same sample would be 10.5.0.4.",
+          "StorePathDescription": "Cisco Asa Certificate Types to manage for Now all that is supported is /Identity."
+        }
+      ]
+    }
+  }
 
 }
